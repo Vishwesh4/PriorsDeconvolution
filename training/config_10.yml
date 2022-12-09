@@ -1,0 +1,56 @@
+ENGINE: #For this section ensure none of the keys are missing
+  epochs: 150
+  save_loc: ./Results #Empty save loc indicates no save location
+  resume_loc: #Empty resume loc indicates no need to resume
+  transfer_loc: 
+  save_freq: 20
+  gpu_devices: [1]
+  use_dataparallel: false
+  location_mod: 
+  random_seed: 2022
+  watch_gradients: false
+
+METRIC:
+  subclass_name: ce_prior
+
+MODEL:
+  subclass_name: ce_prior
+
+DATASET:
+  subclass_name: ce_prior
+  path: ../dataset
+  mask_pth: ../dataset/masks
+  blur_size: 10
+  blur_sigma: 1.5
+  sigma: 0.15
+  train_batch_size: 128
+  test_batch_size: 128
+  tile_h: 256 # for wsi tile extraction
+  tile_w: 256
+  tile_stride_factor_w: 1
+  tile_stride_factor_h: 1
+  lwst_level_idx: 0
+  threshold: 0.7
+
+LOGGER:
+  subclass_name: ce_prior
+  use_wandb: true
+  project_name: comp_project
+  run_name: ce_train_v4_gray_10
+  notes: training cross entropy on blur vs clear
+
+LOSS:
+  module_name: torch.nn
+  subclass_name: CrossEntropyLoss
+
+OPTIMIZER:
+  module_name: torch.optim
+  subclass_name: Adam
+  lr: 0.001
+  weight_decay: 0.005
+
+SCHEDULER:
+  module_name: torch.optim.lr_scheduler
+  subclass_name: ReduceLROnPlateau
+  mode: min
+  patience: 10
