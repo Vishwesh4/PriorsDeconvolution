@@ -7,6 +7,8 @@ In this course project, I have explored different priors for the non blind image
 5. Maximize cells
 6. Cross Entropy, KL divergence
 
+<img src="https://github.com/Vishwesh4/PriorsDeconvolution/blob/master/images/deconv.png" align="center" width="500"><figcaption>Fig.1 - Non blind deconvolution using different priors on histopathology</figcaption></a>
+
 ## Getting Started
 
 ### Prerequisites 
@@ -27,7 +29,7 @@ trainer package can be installed from this [link](https://github.com/Vishwesh4/T
 ### Dataset
 For the experiments, I have used a single slide from the pubically available TIGER dataset(link)[https://tiger.grand-challenge.org/Data/]. The slide used for the experiments is 104S.tif. Do ensure the slide image is stored in `dataset` and its corresponding mask file is stored in `dataset/masks`
 
-### File Descriptions
+## File Descriptions
 - `helper/CannyEdgePytorch`: The code is taken from DCurro's repository[link](https://github.com/DCurro/CannyEdgePytorch), for differentiable canny edge implementation
 - `helper/deconv_adam.py`: Code for deconvolution using adam optimizer
 - `helper/extract_patches.py`: Code for extracting patches given a whole slide image and mask
@@ -46,3 +48,4 @@ python get_image.py -b {0,1,2} -l {0,1} -n {0,1}
 python get_metrics.py -b {0,1,2} -l {0,1} -n {0,1}
 ```
 - `run_experiments.sh`: For runnning all the set of experiments using different blur kernel parameters. Use this to generate table given in the report 
+
