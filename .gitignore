@@ -1,6 +1,5 @@
 results/*
 tests
-*.png
 *.log
 .vscode
 training/logs
